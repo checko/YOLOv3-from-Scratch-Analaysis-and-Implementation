@@ -1,3 +1,30 @@
+"""
+COCO JSON Class ID Validator
+
+This script validates COCO format JSON annotation files by checking if any annotations
+contain category IDs greater than 80 (the maximum number of classes in standard COCO dataset).
+
+Purpose:
+    - Helps identify any invalid class IDs in COCO format annotations
+    - Useful for debugging annotation files before training YOLO models
+    - Prints detailed information about any annotations with invalid category IDs
+
+Usage:
+    python checkcocojsclasses.py path/to/annotations.json
+
+Arguments:
+    json_file_path: Path to the COCO format JSON annotation file
+
+Example:
+    python checkcocojsclasses.py instances_train2017.json
+
+Output:
+    - If invalid annotations are found:
+        Shows the count of invalid annotations and lists their IDs and category IDs
+    - If no invalid annotations:
+        Displays a confirmation message
+"""
+
 import json
 import sys
 

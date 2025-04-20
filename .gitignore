@@ -1,5 +1,7 @@
 
 /input
 /weights
+COCO/
+implementations/__pycache__/
 
 

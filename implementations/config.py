@@ -7,12 +7,12 @@ from albumentations.pytorch import ToTensorV2
 
 PIN_MEMORY = True
 SAVE_MODEL = True
-LOAD_MODEL = True
+LOAD_MODEL = False
 
 
 IMAGE_SIZE = 416
 NUM_CLASSES = 20
-BATCH_SIZE = 32
+BATCH_SIZE = 8
 LEARNING_RATE = 1e-5
 NUM_WORKERS = 4
 NUM_EPOCHS = 100

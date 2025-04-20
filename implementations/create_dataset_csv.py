@@ -95,8 +95,8 @@ def create_train_csv(image_dir, label_dir, output_csv):
 
 if __name__ == "__main__":
     # Define paths
-    IMAGE_DIR = "../COCO/images/train2017/"
-    LABEL_DIR = "../COCO/labels/train2017/"
+    IMAGE_DIR = "../COCO/images/"
+    LABEL_DIR = "../COCO/labels/"
     OUTPUT_CSV = "../COCO/train.csv"
     COCO_JSON = "../COCO/annotations/instances_train2017.json"
     

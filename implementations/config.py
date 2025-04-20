@@ -25,9 +25,9 @@ NMS_IOU_THRESH = 0.45
 S = [IMAGE_SIZE // 32, IMAGE_SIZE // 16, IMAGE_SIZE // 8]
 
 
-DATASET = 'PASCAL_VOC'
+DATASET = 'COCO'
 # "cuda" if torch.cuda.is_available() else
-DEVICE = "cpu"
+DEVICE = "cuda"
 CHECKPOINT_FILE = "checkpoint.pth.tar"
 LABEL_DIR = DATASET + "/labels/"
 IMG_DIR = DATASET + "/images/"
@@ -57,7 +57,7 @@ train_transforms = albumentations.Compose(
                 albumentations.ShiftScaleRotate(
                     rotate_limit=20, p=0.5, border_mode=cv2.BORDER_CONSTANT
                 ),
-                albumentations.IAAAffine(shear=15, p=0.5, mode="constant"),
+                albumentations.Affine(shear=15, p=0.5, mode="constant"),
             ],
             p=1.0,
         ),
@@ -82,7 +82,7 @@ test_transforms = albumentations.Compose(
         ToTensorV2(),
     ],
     bbox_params=albumentations.BboxParams(format="yolo", min_visibility=0.4, label_fields=[]),
-
+)
 
 COCO_LABELS = [
     'person',

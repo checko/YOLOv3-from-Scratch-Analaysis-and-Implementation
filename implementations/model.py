@@ -22,7 +22,7 @@ List is structured by "B" indicating a residual block followed by the number of 
 "S" is for scale prediction block and computing the yolo loss
 "U" is for upsampling the feature map and concatenating with a previous layer
 """
-config = [
+mconfig = [
     (32, 3, 1),
     (64, 3, 2),
     ["B", 1],
@@ -139,7 +139,7 @@ class YOLOv3(nn.Module):
         layers = nn.ModuleList()
         in_channels = self.in_channels
 
-        for module in config:
+        for module in mconfig:
             if isinstance(module, tuple):
                 out_channels, kernel_size, stride = module
                 layers.append(
@@ -410,6 +410,7 @@ def plot_image(image, boxes):
     """Plots predicted bounding boxes on the image"""
     cmap = plt.get_cmap("tab20b")
     class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
+    print(len(class_labels))
     colors = [cmap(i) for i in np.linspace(0, 1, len(class_labels))]
     im = np.array(image)
     height, width, _ = im.shape

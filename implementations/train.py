@@ -5,6 +5,7 @@ Main file for training Yolo model on Pascal VOC and COCO dataset
 import config
 import torch
 import torch.optim as optim
+from loss import Yolov3Loss
 
 from tqdm import tqdm
 
@@ -58,7 +59,7 @@ def main():
     optimizer = optim.Adam(
         model.parameters(), lr=config.LEARNING_RATE, weight_decay=config.WEIGHT_DECAY
     )
-    loss_fn = YoloLoss()
+    loss_fn = Yolov3Loss()
     scaler = torch.cuda.amp.GradScaler()
 
     train_loader, test_loader, train_eval_loader = get_loaders(

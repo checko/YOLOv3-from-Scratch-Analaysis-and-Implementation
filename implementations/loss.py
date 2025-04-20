@@ -17,7 +17,7 @@ class Yolov3Loss(nn.Module):
         self.l_obj = 1
 
 
-    def forward_step(self, preds, target, anchors):
+    def forward(self, preds, target, anchors):
         # Check where obj and nj (we ignore if target == -1)
         obj = target[..., 0] == 1  # in paper this is Iobj_i
         nj = target[..., 0] == 0  # in paper this is Inoobj_i

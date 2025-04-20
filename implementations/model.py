@@ -430,6 +430,8 @@ def plot_image(image, boxes):
         box = box[2:]
         upper_left_x = box[0] - box[2] / 2
         upper_left_y = box[1] - box[3] / 2
+        if class_pred >= len(colors):
+            print(f"{class_pred} - {len(colors)}")
         rect = patches.Rectangle(
             (upper_left_x * width, upper_left_y * height),
             box[2] * width,
